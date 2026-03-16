@@ -1,0 +1,140 @@
+/* RESET E CONFIGURAÇÕES GLOBAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* CAMADAS DE SOBREPOSIÇÃO (Overlays) */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* 1. TELA DE CARREGAMENTO */
+#loading-screen {
+    background: #1a1a1a;
+    flex-direction: column;
+    color: #fff;
+}
+
+.loader-content h1 {
+    font-size: 3rem;
+    color: #ffeb3b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-container {
+    width: 400px;
+    height: 10px;
+    background: #333;
+    border: 2px solid #555;
+    margin-top: 20px;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #4caf50;
+    transition: width 0.3s;
+}
+
+/* 2. MENU PRINCIPAL / LOBBY */
+#main-menu {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.menu-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 40px;
+    border: 4px solid #444;
+    background: #222;
+}
+
+.menu-btn {
+    padding: 15px 30px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.menu-btn:hover, .menu-btn.active {
+    background: #fff;
+    color: #000;
+    transform: translateX(10px);
+}
+
+/* 3. HUD DO JOGO (Em partida) */
+#game-hud {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; /* Não bloqueia o clique do tiro */
+}
+
+.hud-bottom {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #ffeb3b;
+    font-size: 24px;
+    border-bottom: 4px solid #ffeb3b;
+}
+
+.hp-box .label { color: #f44336; margin-right: 10px; }
+
+/* 4. MIRA (CROSSHAIR) */
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    transform: translate(-50%, -50%);
+}
+
+.ch-part {
+    position: absolute;
+    background: #0f0;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.top, .bottom { width: 2px; height: 10px; left: 15px; }
+.top { top: 0; } .bottom { bottom: 0; }
+
+.left, .right { width: 10px; height: 2px; top: 15px; }
+.left { left: 0; } .right { right: 0; }
+
+/* ANIMAÇÃO DE GLITCH (OPCIONAL) */
+.glitch {
+    text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+}
