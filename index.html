@@ -2,68 +2,70 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS-GO: Escolha sua Plataforma</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background: #050505; 
-            color: #0f0; 
-            font-family: 'Press Start 2P', cursive; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh; 
-            text-align: center;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JS-GO | Professional Engine v1.0</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+                "@core/": "./src/core/",
+                "@entities/": "./src/entities/",
+                "@weapons/": "./src/weapons/",
+                "@utils/": "./src/utils/",
+                "@ui/": "./src/ui/"
+            }
         }
-
-        h1 { font-size: 24px; margin-bottom: 50px; text-shadow: 4px 4px #004400; }
-
-        .container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-
-        .card {
-            border: 3px solid #0f0;
-            padding: 30px;
-            width: 250px;
-            cursor: pointer;
-            transition: 0.3s;
-            background: #001100;
-        }
-
-        .card:hover {
-            background: #0f0;
-            color: #000;
-            transform: scale(1.1);
-        }
-
-        .card i { font-size: 40px; display: block; margin-bottom: 20px; }
-        
-        p { font-size: 10px; margin-top: 20px; color: #888; }
-    </style>
+    </script>
 </head>
 <body>
 
-    <h1>JS-GO ARENA</h1>
-    
-    <div class="container">
-        <div class="card" onclick="window.location.href='pc.html'">
-            <div>💻</div>
-            <h2>JOGAR NO PC</h2>
-            <span style="font-size: 8px;">Mouse e Teclado</span>
-        </div>
-
-        <div class="card" onclick="window.location.href='mobile.html'">
-            <div>📱</div>
-            <h2>JOGAR NO MOBILE</h2>
-            <span style="font-size: 8px;">Touch e Joystick</span>
+    <div id="loading-screen" class="overlay">
+        <div class="loader-content">
+            <h1 class="glitch">JS-GO 1.6</h1>
+            <p id="loader-status">Iniciando Engine...</p>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
         </div>
     </div>
 
-    <p>Recomendado: Use tela deitada no Celular</p>
+    <div id="main-menu" class="overlay" style="display: none;">
+        <div class="menu-box">
+            <button class="menu-btn active" id="btn-start">ENTRAR NO SERVIDOR</button>
+            <button class="menu-btn" id="btn-options">OPÇÕES</button>
+            <button class="menu-btn" id="btn-exit">SAIR</button>
+        </div>
+    </div>
 
+    <div id="game-hud" style="display: none;">
+        <div class="hud-bottom">
+            <div class="stat-box hp-box">
+                <span class="label">+</span>
+                <span id="hp-value">100</span>
+            </div>
+            
+            <div class="stat-box ammo-box">
+                <span id="ammo-mag">30</span>
+                <span class="separator">/</span>
+                <span id="ammo-res">90</span>
+            </div>
+        </div>
+        
+        <div id="crosshair">
+            <div class="ch-part top"></div>
+            <div class="ch-part bottom"></div>
+            <div class="ch-part left"></div>
+            <div class="ch-part right"></div>
+        </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+    
 </body>
 </html>
